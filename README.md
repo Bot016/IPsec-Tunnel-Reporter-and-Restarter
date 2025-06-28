@@ -21,7 +21,7 @@ Crie um arquivo `config.json` com os seguintes dados:
     "connection_uuid": "UUID_DA_CONEXAO_PHASE1",
     "cert_path": "OPNsense.pem",
     "firewall_ip": "IP_OU_HOSTNAME_OPNSENSE",
-    "web_port": PORTA_WEB (se for padrão 443),
+    "web_port": "PORTA_WEB (se for padrão 443)",
     "ssh_port": "PORTA_SSH",
     "ssh_user": "root(ou outro, onde esta configurado a chave)",
     "ssh_key_path": "CAMINHO/PARA/id_ed25519",
