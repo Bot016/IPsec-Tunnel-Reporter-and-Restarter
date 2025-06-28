@@ -16,13 +16,14 @@ Crie um arquivo `config.json` com os seguintes dados:
 
 ```json
 {
-    "api_key": "SUA_API_KEY",
-    "api_secret": "SUA_API_SECRET",
-    "connection_uuid": "UUID_DA_CONEXAO",
+    "api_key": "API_KEY",
+    "api_secret": "API_SECRET",
+    "connection_uuid": "UUID_DA_CONEXAO_PHASE1",
     "cert_path": "OPNsense.pem",
-    "ssh_host": "SEU_OPNSENSE",
-    "ssh_port": "porta_do_SSH",
-    "ssh_user": "root",
+    "firewall_ip": "IP_OU_HOSTNAME_OPNSENSE",
+    "web_port": PORTA_WEB (se for padrão 443),
+    "ssh_port": "PORTA_SSH",
+    "ssh_user": "root(ou outro, onde esta configurado a chave)",
     "ssh_key_path": "CAMINHO/PARA/id_ed25519",
     "output_path": "tunnle_report.json"
 }
@@ -39,7 +40,7 @@ Nome da Empresa - IP para pingar
 Exemplo:
 
 ```
-Microsoft - 10.1.1.1
+Contoso - 10.1.1.1
 ```
 
 O script extrai automaticamente o nome e o IP a partir desta descrição.
