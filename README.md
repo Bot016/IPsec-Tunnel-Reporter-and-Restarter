@@ -36,14 +36,29 @@ Crie um arquivo `config.json` com os seguintes dados:
     "api_key": "SUA_API_KEY",
     "api_secret": "SUA_API_SECRET",
     "connection_uuid": "UUID_DA_CONEXAO",
-    "api_url": "https://SEU_OPNSENSE:7070/api/ipsec/connections/search_child",
     "ssh_host": "SEU_OPNSENSE",
-    "ssh_port": 59225,
+    "ssh_port": "porta_do_SSH",
     "ssh_user": "root",
     "ssh_key_path": "CAMINHO/PARA/id_ed25519",
     "output_path": "tunnle_report.json"
 }
 ```
+
+### 🔧 Requisitos de Configuração no OPNsense
+
+A *descrição* da Fase 2 (child SA) deve obrigatoriamente seguir o formato:
+
+```
+Nome da Empresa - IP para pingar
+```
+
+Exemplo:
+
+```
+Microsoft - 10.1.1.1
+```
+
+O script extrai automaticamente o nome e o IP a partir desta descrição.
 
 ## ▶️ Como usar
 
@@ -79,9 +94,4 @@ python IPsec_Tunnel_Report.py
 ]
 ```
 
-## 🔐 Segurança
-
-* Nunca envie seu `config.json` para repositórios públicos.
-* O script usa `verify=False` nas requisições HTTPS por padrão (não recomendado para produção).
-* Utilize uma chave SSH segura e protegida por senha, se possível.
 
