@@ -10,23 +10,6 @@ Este script monitora túneis IPsec configurados no OPNsense via API e, caso algu
 * Reinicia túneis inativos utilizando SSH e comando `swanctl`.
 * Utiliza autenticação por chave SSH.
 
-## 🧱 Requisitos
-
-* Python 3.7+
-* Acesso à API do OPNsense
-* Acesso SSH ao OPNsense com chave privada
-* Bibliotecas:
-
-  * `requests`
-  * `paramiko`
-  * `concurrent.futures`
-
-Instale via:
-
-```bash
-pip install requests paramiko
-```
-
 ## ⚙️ Configuração
 
 Crie um arquivo `config.json` com os seguintes dados:
@@ -36,6 +19,7 @@ Crie um arquivo `config.json` com os seguintes dados:
     "api_key": "SUA_API_KEY",
     "api_secret": "SUA_API_SECRET",
     "connection_uuid": "UUID_DA_CONEXAO",
+    "cert_path": "OPNsense.pem",
     "ssh_host": "SEU_OPNSENSE",
     "ssh_port": "porta_do_SSH",
     "ssh_user": "root",
@@ -60,6 +44,14 @@ Microsoft - 10.1.1.1
 
 O script extrai automaticamente o nome e o IP a partir desta descrição.
 
+* O script realiza chamadas HTTPS autenticadas. Para evitar o uso de `verify=False`, é **recomendado adicionar a CA ou certificado do OPNsense localmente** e usá-la no campo `"cert_path"`.
+* **Se for usar IP ao invés de hostname na URL da API**, será necessário:
+
+  * Criar um **novo certificado** em *System > Trust > Authorities* ou *Certificates*.
+  * Adicionar o **IP do firewall** ao campo **"Alternative Name"** (Subject Alternative Name - SAN) como tipo **IP Address**.
+  * Atribuir esse certificado à interface Web do OPNsense em *System > Settings > Administration*.
+* Isso garante que a verificação HTTPS funcione corretamente usando o IP, evitando erros de certificado inválido.
+
 ## ▶️ Como usar
 
 Execute o script com:
@@ -72,7 +64,7 @@ python IPsec_Tunnel_Report.py
 
 1. Consulta os túneis IPsec configurados.
 2. Pinga os IPs remotos.
-3. Gera um arquivo `tunnle_report.json` com o status de cada túnel.
+3. Gera um arquivo (definido no config.json) com o status de cada túnel.
 4. Reinicia automaticamente túneis que estiverem inativos.
 
 ## 📂 Exemplo de saída (`tunnle_report.json`)
@@ -94,4 +86,6 @@ python IPsec_Tunnel_Report.py
 ]
 ```
 
+## 📃 Licença
 
+Este projeto é open-source e está licenciado sob a licença MIT.
