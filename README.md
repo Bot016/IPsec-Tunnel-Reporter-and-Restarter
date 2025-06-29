@@ -19,13 +19,13 @@ Crie um arquivo `config.json` com os seguintes dados:
     "api_key": "API_KEY",
     "api_secret": "API_SECRET",
     "connection_uuid": "UUID_DA_CONEXAO_PHASE1",
-    "cert_path": "OPNsense.pem",
+    "cert_path": "CAMINHO/PARA/O/CERTIFICADO.pem",
     "firewall_ip": "IP_OU_HOSTNAME_OPNSENSE",
     "web_port": "PORTA_WEB (se for padrão 443)",
     "ssh_port": "PORTA_SSH",
-    "ssh_user": "root(ou outro, onde esta configurado a chave)",
+    "ssh_user": "root (ou outro, onde esta configurado a chave)",
     "ssh_key_path": "CAMINHO/PARA/id_ed25519",
-    "output_path": "tunnle_report.json"
+    "output_path": "CAMINHO/PARA/O/REPORT.JSON"
 }
 ```
 
